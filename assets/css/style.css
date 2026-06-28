@@ -26,16 +26,39 @@
   --font:"Inter","Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
 }
 
-/* версия для слабовидящих */
-body.a11y{--bg:#000;--surface:#000;--surface-2:#000;--ink:#ffe600;--muted:#ffe600;--line:#ffe600;
-  --brand:#000;--brand-dark:#000;--brand-darker:#000;--brand-tint:#000;--brand-soft:#000;--accent:#ffe600;
-  --shadow-sm:none;--shadow-md:none;--shadow-lg:none;font-size:18px;}
-body.a11y *{color:#ffe600 !important;border-color:#ffe600 !important;background-image:none !important;}
-body.a11y header,body.a11y .topbar,body.a11y .mega,body.a11y footer,body.a11y .card,
-body.a11y .btn,body.a11y .head-cta,body.a11y .mn-cta,body.a11y .cta-btn,body.a11y .search button,
-body.a11y .see-all,body.a11y .hero{background:#000 !important;box-shadow:none !important;}
-body.a11y .head-cta,body.a11y .mn-cta,body.a11y .search button,body.a11y .btn{border:2px solid #ffe600 !important;}
-body.a11y img{filter:grayscale(1)}
+/* ===== Версия для слабовидящих — панель настроек (без «вырвиглазных» цветов) ===== */
+/* увеличение масштаба */
+body.av[data-font="2"]{zoom:1.15}
+body.av[data-font="3"]{zoom:1.32}
+/* изображения выключены */
+body.av-noimg img{display:none !important}
+body.av-noimg .hero-media,body.av-noimg .news .ph,body.av-noimg .ban-grid,
+body.av-noimg .gal-grid,body.av-noimg .hero::after{display:none !important}
+/* схема «чёрным по белому» — спокойный высокий контраст */
+body.av[data-scheme="wb"]{--bg:#fff;--surface:#fff;--surface-2:#f0f0f0;--ink:#000;--muted:#1c1c1c;
+  --line:#222;--brand:#0a4f44;--brand-dark:#063b33;--brand-darker:#000;--brand-tint:#e9e9e9;
+  --brand-soft:#9a9a9a;--accent:#000;--accent-ink:#fff;--shadow-sm:none;--shadow-md:none;--shadow-lg:none}
+body.av[data-scheme="wb"] .hero,body.av[data-scheme="wb"] .page-hero,
+body.av[data-scheme="wb"] header,body.av[data-scheme="wb"] .topbar{background:#fff}
+body.av[data-scheme="wb"] footer{background:#fff;border-top:2px solid #000}
+body.av[data-scheme="wb"] footer *{color:#000}
+body.av[data-scheme="wb"] .news .ph{filter:grayscale(1)}
+body.av[data-scheme="wb"] a{text-decoration:underline}
+/* схема «белым по чёрному» — спокойная тёмная */
+body.av[data-scheme="bw"]{--bg:#0e1413;--surface:#161f1c;--surface-2:#1d2925;--ink:#eaf3f0;
+  --muted:#aebfb9;--line:#2b3a35;--brand:#3cc6ae;--brand-dark:#62d6c2;--brand-darker:#0a0f0e;
+  --brand-tint:#1b2925;--brand-soft:#2b3a35;--accent:#f0b75e;--accent-ink:#0e1413;
+  --shadow-sm:none;--shadow-md:none;--shadow-lg:none}
+body.av[data-scheme="bw"] .hero,body.av[data-scheme="bw"] .page-hero{background:linear-gradient(180deg,#161f1c,#0e1413)}
+body.av[data-scheme="bw"] header{background:#0e1413}
+body.av[data-scheme="bw"] .topbar{background:#161f1c}
+body.av[data-scheme="bw"] footer{background:#0a0f0e}
+body.av[data-scheme="bw"] footer h4,body.av[data-scheme="bw"] .foot-brand strong,
+body.av[data-scheme="bw"] .foot-contacts a{color:#fff}
+body.av[data-scheme="bw"] footer a,body.av[data-scheme="bw"] .foot-contacts li,
+body.av[data-scheme="bw"] .foot-brand p{color:#aebfb9}
+body.av[data-scheme="bw"] .news .ph,body.av[data-scheme="bw"] .ban img,
+body.av[data-scheme="bw"] .hero-media{filter:brightness(.9)}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -79,9 +102,10 @@ nav.primary{margin-left:auto;display:flex;align-items:stretch;height:80px}
 .burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px auto;border-radius:2px}
 
 /* ===== MEGA MENU ===== */
-.mega{position:absolute;top:calc(100% - 1px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);padding:18px;min-width:560px;opacity:0;visibility:hidden;transition:.2s;z-index:120}
+.mega{position:absolute;top:calc(100% - 1px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);padding:18px;min-width:560px;max-width:calc(100vw - 32px);opacity:0;visibility:hidden;transition:.2s;z-index:120}
 .nav-item:hover .mega,.nav-item:focus-within .mega{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-.mega.wide{min-width:720px}
+.mega.wide{min-width:720px;left:0;transform:translateX(0) translateY(8px)}
+.nav-item:hover .mega.wide,.nav-item:focus-within .mega.wide{transform:translateX(0) translateY(0)}
 .mega.right{left:auto;right:0;transform:translateY(8px)}
 .nav-item:hover .mega.right,.nav-item:focus-within .mega.right{transform:translateY(0)}
 .mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
@@ -327,6 +351,8 @@ footer{background:var(--brand-darker);color:#c8e6df;padding:54px 0 22px}
   .gal-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:760px){
+  .sec-head{flex-wrap:wrap;gap:12px}
+  .sec-head .see-all{order:3}
   .audience-grid{grid-template-columns:1fr}
   .serv-grid{grid-template-columns:repeat(2,1fr)}
   .spec-grid{grid-template-columns:1fr}
@@ -338,3 +364,68 @@ footer{background:var(--brand-darker);color:#c8e6df;padding:54px 0 22px}
   .topbar .hide-sm{display:none}
 }
 @media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   ДОПОЛНЕНИЯ: переносы, доступность, панель А11Y, адаптив
+   ============================================================ */
+/* телефоны и e-mail не разрываем на две строки */
+a[href^="tel:"],a[href^="mailto:"],.tb-phone{white-space:nowrap}
+.foot-contacts li{flex-wrap:wrap}
+/* видимый фокус для клавиатуры */
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+/* якорные переходы не прячутся под липкой шапкой */
+html{scroll-padding-top:96px}
+/* длинные ссылки/слова в контенте не вылезают за край */
+.prose{overflow-wrap:anywhere}
+.prose a{word-break:break-word}
+/* таблицы прокручиваются по горизонтали на узких экранах */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;border:1px solid var(--line);border-radius:10px;max-width:100%}
+.table-scroll table{margin:0;border:none;border-radius:0;min-width:520px}
+/* не даём grid/flex-колонкам растягиваться под широкий контент (min-width:auto) */
+.page-wrap{min-width:0}
+.page-wrap > .prose,.page-wrap > .side{min-width:0;max-width:100%}
+.prose{min-width:0}
+
+/* ---- панель «Версия для слабовидящих» ---- */
+.av-bar{display:none;background:var(--surface-2);border-bottom:1px solid var(--line)}
+body.av .av-bar{display:block}
+.av-bar-in{display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;padding:11px 0}
+.av-group{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.av-group>b{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-right:2px}
+.av-bar button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 12px;font-weight:700;line-height:1;transition:.12s}
+.av-bar button:hover{border-color:var(--brand);color:var(--brand-dark)}
+.av-bar button[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand)}
+.av-bar .s1{font-size:13px}.av-bar .s2{font-size:16px}.av-bar .s3{font-size:19px}
+.av-off{margin-left:auto;color:var(--brand-dark)}
+
+/* ---- адаптив: дополнительные точки ---- */
+@media(max-width:1240px){
+  .nav-link{padding:0 11px;font-size:14px}
+  .head-cta{padding:10px 14px;font-size:14px}
+  .brand-text strong{font-size:15px}
+  .topbar .container{gap:12px}
+}
+@media(max-width:1100px){
+  .av-bar-in{gap:8px 14px}
+}
+@media(max-width:560px){
+  .av-label{display:none}                 /* кнопка-иконка на мобиле */
+  .a11y-toggle{padding:6px 9px}
+  .topbar .container{height:auto;padding-top:7px;padding-bottom:7px;flex-wrap:wrap;justify-content:flex-end;gap:8px 12px}
+  .topbar .spacer{display:none}
+  .head-main{height:64px;gap:10px}
+  .brand .logo-img{width:42px;height:42px}
+  .brand-text strong{font-size:14px}
+  .brand-text span{font-size:11px}
+  .av-off{margin-left:0}
+}
+@media(max-width:400px){
+  .container{padding:0 14px}
+  .hero{padding:36px 0 44px}
+  .hero h1{font-size:25px}
+  .page-hero h1{font-size:21px}
+  .serv-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .sec-head h2{font-size:21px}
+  .brand-text strong{font-size:13px}
+}

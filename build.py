@@ -117,13 +117,28 @@ def render_header(active_key):
             items.append('<div class="nav-item"><a href="#" class="%s">%s %s</a>%s</div>' %
                          (cls, label, caret, render_mega(sub, icon, wide=(key=='about'), right=right)))
     nav = '<nav class="primary" aria-label="Основное меню">%s</nav>' % ''.join(items)
-    return ('<div class="topbar"><div class="container">'
+    av_bar = ('<div class="av-bar" id="avBar"><div class="container av-bar-in">'
+      '<span class="av-group"><b>Размер шрифта</b>'
+      '<button class="s1" data-av-font="1" aria-pressed="false" title="Обычный">А</button>'
+      '<button class="s2" data-av-font="2" aria-pressed="false" title="Крупный">А</button>'
+      '<button class="s3" data-av-font="3" aria-pressed="false" title="Очень крупный">А</button></span>'
+      '<span class="av-group"><b>Цвет</b>'
+      '<button data-av-scheme="default" aria-pressed="false">Обычный</button>'
+      '<button data-av-scheme="wb" aria-pressed="false">Чёрным по белому</button>'
+      '<button data-av-scheme="bw" aria-pressed="false">Белым по чёрному</button></span>'
+      '<span class="av-group"><b>Изображения</b>'
+      '<button data-av-img="on" aria-pressed="false">Вкл</button>'
+      '<button data-av-img="off" aria-pressed="false">Выкл</button></span>'
+      '<button class="av-off" id="avOff">Обычная версия ✕</button>'
+      '</div></div>')
+    return (av_bar +
+            '<div class="topbar"><div class="container">'
             '<a href="contacts.html" class="hide-sm">'+svg('pin',14)+' Нижний Новгород, ул. Июльских дней, 8</a>'
             '<span class="spacer"></span>'
             '<a href="http://portal.nmbc.ru/" target="_blank" rel="noopener" class="hide-sm">Портал НМК · АИСТ</a>'
             '<a href="sitemap.html" class="hide-sm">Карта сайта</a>'
             '<a href="tel:+78312821979" class="tb-phone">'+svg('phone',14)+' 8 (831) 282-19-79</a>'
-            '<button class="a11y-toggle" id="a11yBtn" aria-pressed="false">'+svg('globe',16)+' Версия для слабовидящих</button>'
+            '<button class="a11y-toggle" id="a11yBtn" aria-pressed="false">'+svg('globe',16)+'<span class="av-label"> Версия для слабовидящих</span></button>'
             '</div></div>'
             '<header><div class="container head-main">'
             '<a href="index.html" class="brand" aria-label="На главную">'
