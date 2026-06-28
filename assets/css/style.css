@@ -78,8 +78,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .topbar a:hover{color:var(--brand-dark)}
 .topbar .spacer{flex:1}
 .topbar .tb-phone{font-weight:700;color:var(--brand-dark)}
-.a11y-toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--brand-soft);padding:4px 12px;border-radius:999px;color:var(--brand-dark);font-weight:600}
-.a11y-toggle:hover{background:var(--brand-tint)}
+.a11y-toggle{display:inline-flex;align-items:center;gap:7px;border:2px solid #c47a08;padding:4px 12px;border-radius:999px;background:#f2a93c;color:#2a1800;font-weight:700;box-shadow:0 1px 6px rgba(242,169,60,.40)}
+.a11y-toggle:hover{background:#e0950f;border-color:#a36406}
 .a11y-toggle .eye{width:16px;height:16px}
 
 /* ===== HEADER ===== */
