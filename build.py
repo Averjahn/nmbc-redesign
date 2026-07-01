@@ -58,25 +58,25 @@ ABOUT = [
 STUDENTS = [
  ('Студенческая жизнь','student-life.html','Самоуправление и события'),
  ('Стипендии и общежитие','about-stipendii.html','Меры поддержки'),
- ('Газета «Студенческий вестник VITA»','http://nmbc.ru/studencheskaja-zhizn/gazeta-studencheskij-vestnik-vita/','Студенческое издание'),
- ('Волонтёрское движение','http://nmbc.ru/studencheskaja-zhizn/volonterskoe-dvizhenie/','Медицинские отряды'),
- ('Спортивно-оздоровительные мероприятия','http://nmbc.ru/studencheskaja-zhizn/sportivno-ozdorovitelnye-meroprijat/','Спорт и здоровье'),
- ('Навигаторы детства','http://nmbc.ru/studencheskaja-zhizn/navigatory-detstva/','Воспитательная работа'),
+ ('Газета «Студенческий вестник VITA»','student-life.html','Студенческое издание'),
+ ('Волонтёрское движение','student-life.html','Медицинские отряды'),
+ ('Спортивно-оздоровительные мероприятия','student-life.html','Спорт и здоровье'),
+ ('Навигаторы детства','student-life.html','Воспитательная работа'),
 ]
 SCIENCE = [
  ('Научная деятельность','science.html','Обзор раздела'),
- ('Студенческое научное общество','http://nmbc.ru/nauchnaja-dejatelnost/studencheskoe-nauchnoe-obshhestvo/','СНО'),
- ('Научно-методическая работа','http://nmbc.ru/nauchnaja-dejatelnost/nauchno-metodicheskaja-rabota-prepodav/','Преподаватели'),
+ ('Студенческое научное общество','science.html','СНО'),
+ ('Научно-методическая работа','science.html','Преподаватели'),
  ('Центр карьеры и трудоустройства','career.html','Выпускникам'),
- ('Наши социальные партнёры','http://nmbc.ru/nashi-socialnye-partnery/','Базы практик'),
- ('Первичная аккредитация','http://nmbc.ru/akkred/','Аккредитация специалистов'),
+ ('Наши социальные партнёры','career.html','Базы практик'),
+ ('Первичная аккредитация','about-documents.html','Аккредитация специалистов'),
 ]
 MEDIA = [
  ('Новости','news.html','Лента событий'),
  ('Фотогалерея','media.html','Фотоотчёты'),
- ('Статистика','http://nmbc.ru/statistika/','Показатели'),
- ('Мероприятия','http://nmbc.ru/meroprijatija/','Календарь'),
- ('Выпуски студентов','http://nmbc.ru/vypuski-studentov/','Архив выпусков'),
+ ('Статистика','about-education.html','Показатели'),
+ ('Мероприятия','student-life.html','Календарь'),
+ ('Выпуски студентов','career.html','Архив выпусков'),
  ('Карта сайта','sitemap.html','Все разделы'),
 ]
 MENU = [
@@ -312,8 +312,8 @@ def build_index():
       '<div class="aud-card aud-3"><div class="aud-ico">'+svg('briefcase',27)+'</div><h3>Выпускнику</h3>'
       '<p>Трудоустройство, аккредитация и социальные партнёры.</p>'
       '<div class="aud-links"><a href="career.html">Центр карьеры<span class="arr">'+svg('arrow',16)+'</span></a>'
-      '<a href="http://nmbc.ru/akkred/" target="_blank" rel="noopener">Первичная аккредитация<span class="arr">'+svg('arrow',16)+'</span></a>'
-      '<a href="http://nmbc.ru/nashi-socialnye-partnery/" target="_blank" rel="noopener">Социальные партнёры<span class="arr">'+svg('arrow',16)+'</span></a></div></div>'
+      '<a href="about-documents.html">Первичная аккредитация<span class="arr">'+svg('arrow',16)+'</span></a>'
+      '<a href="career.html">Социальные партнёры<span class="arr">'+svg('arrow',16)+'</span></a></div></div>'
       '</div></div></section>')
 
     # services
@@ -355,9 +355,9 @@ def build_index():
     # news
     nc=[]
     for d,t,img,url in NEWS[:8]:
-        nc.append('<article class="news"><a href="%s" target="_blank" rel="noopener" class="ph" '
+        nc.append('<article class="news"><a href="news.html" class="ph" '
           'style="background-image:url(assets/img/news/%s)"></a><div class="body"><time>%s</time>'
-          '<h3>%s</h3><a class="rd" href="%s" target="_blank" rel="noopener">Читать '%(url,img,d,t,url)+svg('arrow',13)+'</a></div></article>')
+          '<h3>%s</h3><a class="rd" href="news.html">Читать '%(img,d,t)+svg('arrow',13)+'</a></div></article>')
     news=('<section class="block"><div class="container">'
       '<div class="sec-head"><div><div class="eyebrow">Жизнь колледжа</div><h2>Новости и события</h2></div>'
       '<a href="news.html" class="see-all">Все новости '+svg('arrow',15)+'</a></div>'
@@ -375,7 +375,7 @@ def build_index():
 
     # banners
     BAN=[('credit.jpg','Образовательный кредит в СПО','abiturientu.html'),
-         ('cyber.jpg','Кибергигиена','http://nmbc.ru/'),
+         ('cyber.jpg','Кибергигиена','index.html'),
          ('takzdorovo.jpg','Так здорово — портал о здоровье','https://www.takzdorovo.ru/')]
     bans=''.join('<a class="ban" href="%s"%s><img src="assets/img/banners/%s" alt="%s" loading="lazy"></a>'
                  %(h,aattr(h),img,t) for img,t,h in BAN)
@@ -444,12 +444,12 @@ def build_news():
     return page('Новости', body, active_key='media', description='Новости НМБК')
 
 def build_media():
-    gal=''.join('<a class="gal" href="http://nmbc.ru/fotogalereja/" target="_blank" rel="noopener">'
+    gal=''.join('<a class="gal" href="media.html">'
                 '<img src="assets/img/slides/%s" alt="Фото колледжа" loading="lazy"></a>'%s for s in SLIDES)
     body=('<section class="page-hero"><div class="container">'+breadcrumb(('Медиа','media.html'),('Фотогалерея','media.html'))
       +'<h1>Фотогалерея и медиа</h1><p class="sub">Фотоотчёты о жизни колледжа, мероприятиях и буднях студентов.</p></div></section>'
       +'<section class="block"><div class="container"><div class="gal-grid">'+gal+'</div>'
-      +'<div class="src-note">Полная фотогалерея: '
+      +'<div class="src-note">Полная фотогалерея на официальном сайте: '
        '<a href="http://nmbc.ru/fotogalereja/" target="_blank" rel="noopener">nmbc.ru/fotogalereja</a></div></div></section>')
     return page('Фотогалерея', body, active_key='media', description='Фотогалерея НМБК')
 
@@ -528,23 +528,23 @@ def main():
     written.append(write('abiturientu.html', build_abiturientu()))
     written.append(write('student-life.html', hub_page('student-life.html','Студенческая жизнь',
         'Самоуправление, волонтёрство, спорт, творчество и общественная жизнь студентов.', STUDENTS[2:]+[
-        ('Гражданско-правовая деятельность','http://nmbc.ru/studencheskaja-zhizn/organizacija-grazhdansko-pravovoj-dejatelnosti/','Правовое воспитание'),
-        ('Конкурсы, конференции, семинары','http://nmbc.ru/studencheskaja-zhizn/uchastie-studentov-v-konkursah-konferencijah-seminarah/','Участие студентов')],
+        ('Гражданско-правовая деятельность','student-life.html','Правовое воспитание'),
+        ('Конкурсы, конференции, семинары','student-life.html','Участие студентов')],
         'students','users')))
     written.append(write('science.html', hub_page('science.html','Научная деятельность',
         'Научно-методическая работа, студенческое научное общество и профессиональные конкурсы.', [
-        ('Студенческое научное общество','http://nmbc.ru/nauchnaja-dejatelnost/studencheskoe-nauchnoe-obshhestvo/','СНО колледжа'),
-        ('Научно-методическая работа','http://nmbc.ru/nauchnaja-dejatelnost/nauchno-metodicheskaja-rabota-prepodav/','Преподаватели'),
-        ('Профессиональные конкурсы','http://nmbc.ru/nauchnaja-dejatelnost/professionalnye-konkursy/','Конкурсы мастерства'),
-        ('Мероприятия Совета директоров МФПОО ПФО','http://nmbc.ru/nauchnaja-dejatelnost/meroprijatija-po-planu-soveta-direktorov-mfpoo-pfo/','План мероприятий')],
+        ('Студенческое научное общество','science.html','СНО колледжа'),
+        ('Научно-методическая работа','science.html','Преподаватели'),
+        ('Профессиональные конкурсы','science.html','Конкурсы мастерства'),
+        ('Мероприятия Совета директоров МФПОО ПФО','science.html','План мероприятий')],
         'science','cap')))
     written.append(write('career.html', hub_page('career.html','Трудоустройство и карьера',
         'Содействие трудоустройству выпускников, социальные партнёры и вакансии.', [
-        ('Центр карьеры и трудоустройства','http://nmbc.ru/slujbasodtrvyp/','Служба содействия выпускникам'),
-        ('Наши социальные партнёры','http://nmbc.ru/nashi-socialnye-partnery/','Базы практик и работодатели'),
-        ('Вакансии для выпускников','http://nmbc.ru/vakansii-vypusknikam/','Предложения работодателей'),
-        ('Вакансии колледжа','http://nmbc.ru/vakansii/','Работа в колледже'),
-        ('Первичная аккредитация','http://nmbc.ru/akkred/','Аккредитация специалистов')],
+        ('Центр карьеры и трудоустройства','career.html','Служба содействия выпускникам'),
+        ('Наши социальные партнёры','career.html','Базы практик и работодатели'),
+        ('Вакансии для выпускников','career.html','Предложения работодателей'),
+        ('Вакансии колледжа','career.html','Работа в колледже'),
+        ('Первичная аккредитация','about-documents.html','Аккредитация специалистов')],
         'science','briefcase')))
     written.append(write('news.html', build_news()))
     written.append(write('media.html', build_media()))
