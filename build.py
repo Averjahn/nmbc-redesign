@@ -32,6 +32,8 @@ IC = {
  'shield':'<path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>',
  'plus':'<path d="M12 5v14M5 12h14"/>',
  'arrow':'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ 'newspaper':'<path d="M4 3h13a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M4 3H2v16"/><path d="M8 8h7M8 12h7M8 16h4"/>',
+ 'award':'<circle cx="12" cy="9" r="5"/><path d="m9 15-.7 5.2 3.7-2 3.7 2L15 15"/>',
 }
 def svg(name, w=18, cls=''):
     p = IC.get(name, IC['doc'])
@@ -41,43 +43,43 @@ def svg(name, w=18, cls=''):
 
 # ---------------------------------------------------------------- меню
 ABOUT = [
- ('Основные сведения','about-osnovnye.html','Реквизиты, история, учредитель'),
- ('Структура и органы управления','about-structure.html','Корпуса, филиалы, советы'),
- ('Документы','about-documents.html','Устав, лицензия, локальные акты'),
- ('Образование','about-education.html','Программы, ГИА, численность'),
- ('Образовательные стандарты','about-standards.html','ФГОС СПО'),
- ('Руководство. Педсостав','about-rukovodstvo.html','Администрация и преподаватели'),
- ('Материально-техническое обеспечение','about-mtb.html','Кабинеты, оборудование, доступная среда'),
- ('Стипендии и меры поддержки','about-stipendii.html','Стипендии, общежитие'),
- ('Платные образовательные услуги','about-platnye.html','Договоры и стоимость'),
- ('Финансово-хозяйственная деятельность','about-finansy.html','Отчётность, госзадание'),
- ('Вакантные места для приёма','about-vakantnye.html','Приём и перевод'),
- ('Международное сотрудничество','about-mezhdunar.html','Сотрудничество'),
- ('Организация питания','about-pitanie.html','Питание обучающихся'),
+ ('Основные сведения','about-osnovnye.html','Реквизиты, история, учредитель','building'),
+ ('Структура и органы управления','about-structure.html','Корпуса, филиалы, советы','grid'),
+ ('Документы','about-documents.html','Устав, лицензия, локальные акты','doc'),
+ ('Образование','about-education.html','Программы, ГИА, численность','cap'),
+ ('Образовательные стандарты','about-standards.html','ФГОС СПО','award'),
+ ('Руководство. Педсостав','about-rukovodstvo.html','Администрация и преподаватели','users'),
+ ('Материально-техническое обеспечение','about-mtb.html','Кабинеты, оборудование, доступная среда','shield'),
+ ('Стипендии и меры поддержки','about-stipendii.html','Стипендии, общежитие','star'),
+ ('Платные образовательные услуги','about-platnye.html','Договоры и стоимость','money'),
+ ('Финансово-хозяйственная деятельность','about-finansy.html','Отчётность, госзадание','briefcase'),
+ ('Вакантные места для приёма','about-vakantnye.html','Приём и перевод','plus'),
+ ('Международное сотрудничество','about-mezhdunar.html','Сотрудничество','globe'),
+ ('Организация питания','about-pitanie.html','Питание обучающихся','heart'),
 ]
 STUDENTS = [
- ('Студенческая жизнь','student-life.html','Самоуправление и события'),
- ('Стипендии и общежитие','about-stipendii.html','Меры поддержки'),
- ('Газета «Студенческий вестник VITA»','student-life.html','Студенческое издание'),
- ('Волонтёрское движение','student-life.html','Медицинские отряды'),
- ('Спортивно-оздоровительные мероприятия','student-life.html','Спорт и здоровье'),
- ('Навигаторы детства','student-life.html','Воспитательная работа'),
+ ('Студенческая жизнь','student-life.html','Самоуправление и события','users'),
+ ('Стипендии и общежитие','about-stipendii.html','Меры поддержки','money'),
+ ('Газета «Студенческий вестник VITA»','student-life.html','Студенческое издание','newspaper'),
+ ('Волонтёрское движение','student-life.html','Медицинские отряды','heart'),
+ ('Спортивно-оздоровительные мероприятия','student-life.html','Спорт и здоровье','shield'),
+ ('Навигаторы детства','student-life.html','Воспитательная работа','star'),
 ]
 SCIENCE = [
- ('Научная деятельность','science.html','Обзор раздела'),
- ('Студенческое научное общество','science.html','СНО'),
- ('Научно-методическая работа','science.html','Преподаватели'),
- ('Центр карьеры и трудоустройства','career.html','Выпускникам'),
- ('Наши социальные партнёры','career.html','Базы практик'),
- ('Первичная аккредитация','about-documents.html','Аккредитация специалистов'),
+ ('Научная деятельность','science.html','Обзор раздела','flask'),
+ ('Студенческое научное общество','science.html','СНО','mortar'),
+ ('Научно-методическая работа','science.html','Преподаватели','book'),
+ ('Центр карьеры и трудоустройства','career.html','Выпускникам','briefcase'),
+ ('Наши социальные партнёры','career.html','Базы практик','building'),
+ ('Первичная аккредитация','about-documents.html','Аккредитация специалистов','check'),
 ]
 MEDIA = [
- ('Новости','news.html','Лента событий'),
- ('Фотогалерея','media.html','Фотоотчёты'),
- ('Статистика','about-education.html','Показатели'),
- ('Мероприятия','student-life.html','Календарь'),
- ('Выпуски студентов','career.html','Архив выпусков'),
- ('Карта сайта','sitemap.html','Все разделы'),
+ ('Новости','news.html','Лента событий','newspaper'),
+ ('Фотогалерея','media.html','Фотоотчёты','image'),
+ ('Статистика','about-education.html','Показатели','grid'),
+ ('Мероприятия','student-life.html','Календарь','cal'),
+ ('Выпуски студентов','career.html','Архив выпусков','cap'),
+ ('Карта сайта','sitemap.html','Все разделы','search'),
 ]
 MENU = [
  ('Сведения','about', ABOUT, 'doc', True),
@@ -95,10 +97,11 @@ def aattr(h):
 def render_mega(items, icon, wide=False, right=False):
     cells = []
     for t in items:
-        title, href, desc = t
+        title, href, desc = t[0], t[1], t[2]
+        ico = t[3] if len(t) > 3 else icon
         cells.append(
           '<a class="m-link" href="%s"%s><span class="m-ico">%s</span>'
-          '<span><b>%s</b><small>%s</small></span></a>' % (href, aattr(href), svg(icon,16), title, desc))
+          '<span><b>%s</b><small>%s</small></span></a>' % (href, aattr(href), svg(ico,16), title, desc))
     cls = 'mega' + (' wide' if wide else '') + (' right' if right else '')
     foot = ('<div class="mega-foot"><span>Раздел портала НМБК</span>'
             '<a href="sitemap.html">Карта сайта %s</a></div>' % svg('arrow',13))
@@ -156,7 +159,7 @@ def render_mobile():
         if sub is None:
             rows.append('<div class="mn-acc"><a href="%s">%s</a></div>' % (key, label))
         else:
-            links = ''.join('<a href="%s"%s>%s</a>' % (h, aattr(h), t) for t,h,d in sub)
+            links = ''.join('<a href="%s"%s>%s</a>' % (h, aattr(h), t) for t,h,d,*_ in sub)
             rows.append('<div class="mn-acc"><button>%s <span class="pl">＋</span></button><div class="mn-sub">%s</div></div>' % (label, links))
     return ('<div class="mobile-nav" id="mobileNav"><div class="mn-panel">'
             '<div class="mn-head"><strong>Меню</strong><button class="mn-close" id="mnClose" aria-label="Закрыть">×</button></div>'
@@ -171,7 +174,7 @@ SOCIAL = ('<div class="socials">'
  '</div>')
 
 def render_footer():
-    about_links = ''.join('<a href="%s">%s</a>' % (h,t) for t,h,d in ABOUT[:6])
+    about_links = ''.join('<a href="%s">%s</a>' % (h,t) for t,h,d,*_ in ABOUT[:6])
     serv = ('<a href="abiturientu.html">Поступающему</a><a href="about-education.html">Образование</a>'
             '<a href="news.html">Новости</a><a href="about-stipendii.html">Стипендии и общежитие</a>'
             '<a href="http://portal.nmbc.ru/" target="_blank" rel="noopener">Портал НМК · АИСТ</a>'
@@ -217,7 +220,7 @@ def frag(name):
 # ---------------------------------------------------------------- inner (Сведения) с боковым меню
 def about_sidebar(active_file):
     links = ''.join('<a href="%s"%s>%s</a>' % (h, ' class="active"' if h==active_file else '', t)
-                    for t,h,d in ABOUT)
+                    for t,h,d,*_ in ABOUT)
     return '<aside class="side"><h4>Сведения об ОО</h4><nav>%s</nav></aside>' % links
 
 def breadcrumb(*pairs):
@@ -344,7 +347,7 @@ def build_index():
 
     # svedeniya tiles
     tiles=''.join('<a class="sved" href="%s"><span class="n">%d</span>%s</a>'%(h,i+1,t)
-                  for i,(t,h,d) in enumerate(ABOUT))
+                  for i,(t,h,d,*_) in enumerate(ABOUT))
     sved=('<section class="block tint"><div class="container">'
       '<div class="sec-head"><div><div class="eyebrow">Открытость</div>'
       '<h2>Сведения об образовательной организации</h2>'
@@ -399,7 +402,7 @@ def build_index():
 def hub_page(fname, title, sub, items, active_key, icon='grid'):
     cards=''.join('<a class="hub" href="%s"%s><span class="h-ico">%s</span><h3>%s</h3><p>%s</p>'
                   '<span class="go">Открыть %s</span></a>'%(h,aattr(h),svg(icon,21),t,d,svg("arrow",13))
-                  for t,h,d in items)
+                  for t,h,d,*_ in items)
     body=('<section class="page-hero"><div class="container">'
           +breadcrumb((title,fname))+'<h1>%s</h1><p class="sub">%s</p></div></section>'%(title,sub)
           +'<section class="block"><div class="container"><div class="hub-grid">%s</div>'%cards
